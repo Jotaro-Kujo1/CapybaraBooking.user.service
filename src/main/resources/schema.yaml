@@ -1,0 +1,60 @@
+openapi: "3.0.0"
+info:
+  description:
+    Class generator for query
+  version: 1.0-SNAPSHOT
+  title: flat-review
+  contact:
+    email: lebedev.vada@gmail.com
+paths:
+  /attachService:
+    post:
+      tags:
+        - Проверка работоспособности модуля
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    UserUpdatePhone:
+      type: object
+      required:
+        - login
+        - phone
+      properties:
+        login:
+          type: string
+        phone:
+          type: string
+          pattern: +7[0-9]{10}
+    UserUpdateEmail:
+      type: object
+      required:
+        - login
+        - email
+      properties:
+        login:
+          type: string
+        email:
+          type: string
+    UserReview:
+      type: object
+      required:
+        - login
+      properties:
+        login:
+          type: string
+    UserView:
+      type: object
+      required:
+        - login
+        - password
+        - phone
+        - email
+      properties:
+        login:
+          type: string
+          nullable: false
+        password:
+          type: string
+          nullable: false
