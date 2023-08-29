@@ -37,6 +37,16 @@ components:
           type: string
         email:
           type: string
+    UserUpdatePost:
+      type: object
+      required:
+        - login
+        - post
+      properties:
+        login:
+          type: string
+        post:
+          type: string
     UserReview:
       type: object
       required:

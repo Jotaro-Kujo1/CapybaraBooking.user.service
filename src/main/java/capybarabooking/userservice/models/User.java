@@ -33,4 +33,6 @@ public class User {
 
     @Email(message = INVALID_EMAIL_MESSAGE)
     public String email;
+
+    public String post;
 }

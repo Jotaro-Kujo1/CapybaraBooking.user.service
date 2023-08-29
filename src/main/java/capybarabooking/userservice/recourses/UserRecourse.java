@@ -1,7 +1,10 @@
 package capybarabooking.userservice.recourses;
 
+import capybarabooking.userservice.convertors.UserUpdatePostConverter;
+import capybarabooking.userservice.exceptions.UserException;
 import com.flat_review.openapi.model.UserUpdateEmail;
 import com.flat_review.openapi.model.UserUpdatePhone;
+import com.flat_review.openapi.model.UserUpdatePost;
 import com.flat_review.openapi.model.UserView;
 import capybarabooking.userservice.convertors.UserConverter;
 import capybarabooking.userservice.convertors.UserUpdateEmailConverter;
@@ -22,8 +25,8 @@ import java.util.Map;
 
 import static capybarabooking.userservice.constants.Constants.IS_EMAIL_CORRECT_PATTERN;
 import static capybarabooking.userservice.constants.Constants.IS_PHONE_CORRECT_PATTERN;
-import static capybarabooking.userservice.constants.ErrorMessages.INVALID_EMAIL_MESSAGE;
-import static capybarabooking.userservice.constants.ErrorMessages.INVALID_PHONE_NUMBER_MESSAGE;
+import static capybarabooking.userservice.constants.ErrorCodes.NON_NULL_FIELD_IS_NULL;
+import static capybarabooking.userservice.constants.ErrorMessages.*;
 import static capybarabooking.userservice.constants.SuccessfulMessages.USER_CREATED_SUCCESSFUL_MESSAGE;
 import static capybarabooking.userservice.constants.SuccessfulMessages.USER_SIGN_IN_SUCCESSFUL_MESSAGE;
 import static capybarabooking.userservice.constants.VariableNames.LOGIN;
@@ -44,6 +47,9 @@ public class UserRecourse {
 
     @Autowired
     private UserUpdateEmailConverter userUpdateEmailConverter;
+
+    @Autowired
+    private UserUpdatePostConverter userUpdatePostConverter;
 
     @Autowired
     private UserRequestValidator userRequestValidator;
@@ -88,6 +94,16 @@ public class UserRecourse {
         userService.updateEmail(user);
         responseData.put(LOGIN, user.login);
         responseData.put(MESSAGE, user.email);
+        return new ResponseEntity<>(responseData, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/updatePost")
+    public ResponseEntity<?> updatePost(@RequestBody UserUpdatePost userUpdatePost) {
+        Map<String, String> responseData = new HashMap<>();
+        User user = userUpdatePostConverter.convert(userUpdatePost);
+        userService.updatePost(user);
+        responseData.put(LOGIN, user.login);
+        responseData.put(MESSAGE, user.post);
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
 

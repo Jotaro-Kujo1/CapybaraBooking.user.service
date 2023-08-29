@@ -27,6 +27,10 @@ public class UserService {
         userRepository.updateUserEmail(userUpdateEmail.login, userUpdateEmail.email);
     }
 
+    public void updatePost(User userUpdatePost) {
+        userRepository.updateUserPost(userUpdatePost.login, userUpdatePost.post);
+    }
+
     public String hashPasswordToSha256(String base) {
         try {
             final MessageDigest digset = MessageDigest.getInstance("SHA-256");

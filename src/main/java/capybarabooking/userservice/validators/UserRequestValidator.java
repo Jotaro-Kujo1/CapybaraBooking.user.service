@@ -65,7 +65,7 @@ public class UserRequestValidator {
                 .matches();
     }
 
-    private boolean isLoginExists(String login) {
+    public boolean isLoginExists(String login) {
         return Objects.nonNull(login) && !login.isBlank() && !login.isEmpty();
     }
 

@@ -14,10 +14,14 @@ public interface UserRepository extends CrudRepository<User, String> {
     User findAllByLogin(String login);
 
     @Modifying
-    @Query(value = "UPDATE User u SET u.phone = :phone where u.login = :login")
+    @Query(value = "UPDATE User u SET u.phone = :phone WHERE u.login = :login")
     void updateUserPhoneNumber(String login, String phone);
 
     @Modifying
-    @Query(value = "UPDATE User u SET u.email = :email where u.login = :login")
+    @Query(value = "UPDATE User u SET u.email = :email WHERE u.login = :login")
     void updateUserEmail(String login, String email);
+
+    @Modifying
+    @Query(value = "UPDATE User u SET u.post = :post WHERE u.login = :login")
+    void updateUserPost(String login, String email);
 }
