@@ -23,5 +23,5 @@ public interface UserRepository extends CrudRepository<User, String> {
 
     @Modifying
     @Query(value = "UPDATE User u SET u.post = :post WHERE u.login = :login")
-    void updateUserPost(String login, String email);
+    void updateUserPost(String login, String post);
 }
