@@ -1,17 +1,17 @@
 package capybarabooking.userservice.recourses;
 
 import capybarabooking.userservice.convertors.UserUpdatePostConverter;
-import capybarabooking.userservice.exceptions.UserException;
-import com.flat_review.openapi.model.UserUpdateEmail;
-import com.flat_review.openapi.model.UserUpdatePhone;
-import com.flat_review.openapi.model.UserUpdatePost;
-import com.flat_review.openapi.model.UserView;
+
 import capybarabooking.userservice.convertors.UserConverter;
 import capybarabooking.userservice.convertors.UserUpdateEmailConverter;
 import capybarabooking.userservice.convertors.UserUpdatePhoneConverter;
 import capybarabooking.userservice.models.User;
 import capybarabooking.userservice.services.UserService;
 import capybarabooking.userservice.validators.UserRequestValidator;
+import com.capybarabooking.userservice.openapi.model.UserUpdateEmail;
+import com.capybarabooking.userservice.openapi.model.UserUpdatePhone;
+import com.capybarabooking.userservice.openapi.model.UserUpdatePost;
+import com.capybarabooking.userservice.openapi.model.UserView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,6 @@ import java.util.Map;
 
 import static capybarabooking.userservice.constants.Constants.IS_EMAIL_CORRECT_PATTERN;
 import static capybarabooking.userservice.constants.Constants.IS_PHONE_CORRECT_PATTERN;
-import static capybarabooking.userservice.constants.ErrorCodes.NON_NULL_FIELD_IS_NULL;
 import static capybarabooking.userservice.constants.ErrorMessages.*;
 import static capybarabooking.userservice.constants.SuccessfulMessages.USER_CREATED_SUCCESSFUL_MESSAGE;
 import static capybarabooking.userservice.constants.SuccessfulMessages.USER_SIGN_IN_SUCCESSFUL_MESSAGE;
@@ -33,7 +32,7 @@ import static capybarabooking.userservice.constants.VariableNames.LOGIN;
 import static capybarabooking.userservice.constants.VariableNames.MESSAGE;
 
 @RestController
-@RequestMapping("/flat-review/v1/users")
+@RequestMapping("/user-service/v1/users")
 public class UserRecourse {
 
     @Autowired
@@ -106,5 +105,4 @@ public class UserRecourse {
         responseData.put(MESSAGE, user.post);
         return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
-
 }

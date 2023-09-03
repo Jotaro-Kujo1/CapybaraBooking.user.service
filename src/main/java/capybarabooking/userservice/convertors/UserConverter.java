@@ -1,8 +1,8 @@
 package capybarabooking.userservice.convertors;
 
-import com.flat_review.openapi.model.UserView;
 import capybarabooking.userservice.exceptions.UserException;
 import capybarabooking.userservice.models.User;
+import com.capybarabooking.userservice.openapi.model.UserView;
 import lombok.SneakyThrows;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpStatus;
@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import static capybarabooking.userservice.constants.ErrorCodes.NON_NULL_FIELD_IS_NULL;
 import static capybarabooking.userservice.constants.ErrorMessages.LOGIN_OR_PASSWORD_IS_NULL_MESSAGE;
+
 
 @Component
 public class UserConverter implements Converter<UserView, User> {

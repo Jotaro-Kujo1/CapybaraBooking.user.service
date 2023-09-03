@@ -1,7 +1,7 @@
 package capybarabooking.userservice.convertors;
 
 import capybarabooking.userservice.models.User;
-import com.flat_review.openapi.model.UserUpdatePost;
+import com.capybarabooking.userservice.openapi.model.UserUpdatePost;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

@@ -1,10 +1,10 @@
 package capybarabooking.userservice.validators;
 
-import com.flat_review.openapi.model.UserView;
 import capybarabooking.userservice.exceptions.UserException;
 import capybarabooking.userservice.models.User;
 import capybarabooking.userservice.repositories.UserRepository;
 import capybarabooking.userservice.services.UserService;
+import com.capybarabooking.userservice.openapi.model.UserView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;

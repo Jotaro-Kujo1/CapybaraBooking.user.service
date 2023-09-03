@@ -3,7 +3,10 @@ package capybarabooking.userservice.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import static capybarabooking.userservice.constants.ErrorMessages.INVALID_EMAIL_MESSAGE;
@@ -14,6 +17,9 @@ import static capybarabooking.userservice.constants.ErrorMessages.INVALID_PHONE_
         {
                 @UniqueConstraint(columnNames = "login")
         })
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class User {
 
     @Id
