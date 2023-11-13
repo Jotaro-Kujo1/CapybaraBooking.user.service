@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  userService:
+    image: docker-spring-boot-postgres:latest
+    container_name: 'userService'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/CapybaraBooking
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=vadinator2002
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - 5432:5432
+
+  userServiceDb:
+    image: postgres:13.1-apline
+    container_name: 'userServiceDb'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=vadinator2002
